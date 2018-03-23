@@ -1,0 +1,8 @@
+*.meta
+*.png
+*.jpeg
+*.mp3
+*.proto
+.DS_Store
+*.fire
+
