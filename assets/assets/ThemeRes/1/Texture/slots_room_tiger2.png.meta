@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "71dfedf8-ec50-4552-8a8a-6f94f0964aff",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "slots_room_tiger2": {
+      "ver": "1.0.3",
+      "uuid": "71b9b759-d163-4365-a6db-867d0e0f3823",
+      "rawTextureUuid": "71dfedf8-ec50-4552-8a8a-6f94f0964aff",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -6.5,
+      "trimX": 0,
+      "trimY": 13,
+      "width": 160,
+      "height": 207,
+      "rawWidth": 160,
+      "rawHeight": 220,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

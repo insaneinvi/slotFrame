@@ -1,0 +1,735 @@
+enum RoomLevel {
+    CLASSIC = 1;
+    CHEAT = 2;
+    TRIPLE_KING = 3;
+    STRUGGLE = 4;
+    STRUGGLE_CHEAT = 5;
+    HUNDRED = 6;
+    CLASSIC_HIGHEST = 7;
+    FOUR_PLAYER = 8;
+    KNOCKOUT = 9;
+};
+
+enum RedEnvelopeOperation{
+    SEND = 1;
+    RECV = 2;
+    BOTH = 3;
+};
+message UnMuteRequest {
+    required uint32 user_id = 1;
+};
+
+message LoginChatRequest {
+    required uint32 user_id = 1;
+    required uint32 client_type = 2;
+};
+
+message BriefRoomListResponse {
+    repeated BriefRoom rooms = 1;
+};
+
+message IncrementDiamondRequest {
+    required uint32 user_id = 1;
+    required uint64 delta = 2;
+};
+
+message FruitConcurrent {
+    required uint32 fruit_id = 1;
+    required uint32 player_count = 2;
+    required uint32 robot_count = 3;
+};
+
+message FriendshipResponse {
+    required bool be_friend = 1;
+};
+
+message GetItemCountRequest {
+  required uint32 item_id = 1;
+  required uint32 user_id = 2;
+};
+message AcceptFriendRequest {
+    required uint32 user_id = 1;
+    required uint32 target_user_id = 2;
+    optional string tencent_nick_name = 3; 
+};
+
+message LoginResponse {
+};
+
+message CreatePrivateRoomRequest {
+    required uint32 user_id = 1;
+    required uint32 max_round = 2;
+    required uint32 level = 3;
+    required uint32 ante_cash = 4;
+    required uint32 client_type = 5;
+};
+
+message DetailConcurrentResponse {
+    repeated GameConcurrent concurrent_games = 1;
+    required uint32 online_count = 2;
+    repeated HundredConcurrent concurrent_hundreds = 3;
+    repeated PrivateConcurrent concurrent_privates = 4;
+    repeated FruitConcurrent concurrent_fruits = 5;
+};
+
+message RoundBeginRequest {
+    required uint32 room_id = 1;
+    required RoomLevel level = 2;
+    required uint32 user_id = 3;
+    required uint32 fee = 4;
+};
+
+message Concurrent {
+    required RoomLevel level = 1;
+    required uint32 concurrent_user = 2;
+    optional string channel = 3;
+};
+
+message PurchaseItemRequest {
+    required uint32 user_id = 1;
+    required string transaction_id = 2;
+    required uint32 item_id = 3;
+    required uint32 count = 4;
+    required float discount = 5;
+};
+
+message EnterGameResponse {
+    required GameProfile profile = 1;
+};
+
+message DecrementDiamondRequest {
+    required uint32 user_id = 1;
+    required uint64 delta = 2;
+};
+
+message AcceptFriendResponse {
+};
+
+message QueryPlayerInKnockoutRequest{
+    required uint32 user_id = 1;
+};
+message MuteResponse {
+    required uint64 mute_end_time = 1;
+};
+
+message GiftResponse {
+    required uint64 gift_value = 1;
+    required uint32 gift_count = 2;
+};
+
+message SpecialItemID {
+    required uint32 item_id = 1;
+};
+
+message RegisterChatRequest {
+    required uint32 chat_id = 1;
+    required string host = 2;
+    required uint32 port = 3;
+    required string min_app_version = 4;
+    required string web_host = 5;
+    required uint32 web_port = 6;
+    required uint32 web_port_ws = 7;
+};
+
+message LoginRequest {
+    required uint32 user_id = 1;
+};
+
+message GameToken {
+    required Game game = 1;
+    required string token = 2;
+};
+
+message UpdateTencentRequest {
+    required uint32 user_id = 1;
+    required string open_id = 2;
+    required string open_key = 3;
+    required string pf = 4;
+    required string tencent_nick_name = 5;
+    required string tencent_figure_url = 6;
+    required bool is_blue_vip = 7;
+    required bool is_blue_year_vip = 8;
+    required uint32 blue_vip_level = 9;
+    required bool is_super_blue_vip = 10;
+    required string tencent_gender = 11;
+    required uint32 figure_prefix = 12;
+};
+message ChargeResponse {
+};
+
+message LeaveRoomResponse {
+};
+
+message UpdateAbnormalRequest {
+    required uint32 user_id = 1;
+    required bool is_abnormal = 2;
+};
+
+message UpdateChannelRequest{
+    required uint32 user_id = 1;
+    required string channel = 2;
+};
+
+message DetailRoomListResponse {
+    repeated DetailRoom rooms = 1;
+};
+
+message RoomCriteria {
+    required RoomLevel level = 1;
+    required uint32 min_cash = 2;
+    required uint32 ante_cash = 3;
+    required uint32 capped_cash = 4;
+    repeated uint32 raise_cashes = 5;
+    required uint32 check_card_round = 6;
+    required uint32 seat_count = 7;
+    required uint32 max_player_count = 8;
+};
+
+message UpdateGameGlobal{
+    required uint32 game_id = 1;
+    required uint32 daily_lottery_count = 2;
+    required uint32 lottery_last_update_time = 3;  
+    required uint32 transaction_id = 4;
+    required uint32 daily_classic = 5;
+    required uint32 daily_cheat = 6;
+    required uint32 daily_triple_king = 7;
+    required uint32 daily_struggle = 8;
+    required uint32 daily_struggle_cheat = 9;
+};
+
+message UpdateProfileResponse {
+};
+
+enum CostType{
+    COIN = 1;
+    DIAMOND = 2;
+};
+
+message ConcurrentResponse {
+    required uint32 concurrent_users = 1;
+};
+
+message UpdateAbnormalResponse {
+    required uint32 user_id = 1;
+    required bool is_abnormal = 2;
+};
+
+message SellItemResponse {
+    required uint64 currency = 1;
+    required uint64 gain = 2;
+    repeated Item items = 3;
+};
+
+message MakeFriendResponse {
+    required uint64 currency = 1;
+};
+
+message ResetGamedTimeResponse {
+};
+
+message SendGiftResponse {
+    required uint64 currency = 1;
+    optional bool is_gaming = 2;
+    optional bool is_hundreding = 3;
+    optional bool is_fruiting = 4;
+};
+
+message SpecialItem {
+    required uint32 item_id = 1;
+    required int32 life_time = 2;
+};
+
+message IncrementSpecialItemResponse {
+    required SpecialItem item = 1;
+};
+
+message LeaveChatRequest {
+    required uint32 user_id = 1; 
+};
+
+message FriendshipRequest {
+    required uint32 user_id = 1;
+    required uint32 target_user_id = 2;
+};
+
+message ItemListResponse {
+    repeated Item items = 1;
+};
+
+message PlayerProfileList {
+    repeated PlayerProfile profiles = 1;
+};
+
+message WinGameRequest {
+    required uint32 room_id = 1;
+    required RoomLevel level = 2;
+    required uint32 user_id = 3;
+    required string transaction_id = 4;
+    required int64  gain_currency = 5;
+    required uint64 round_win = 6;
+    required bool   is_spring = 7;
+    required bool   is_anti_spring = 8;
+    required uint32 exp = 9;
+    required uint32 round_time = 10;
+    required uint32 multiple = 11;
+    required uint32 last_exp_time = 12;
+    required uint32 daily_exp = 13;
+};
+
+message TextSpeakerRequest {
+    required uint32 user_id = 1; 
+};
+
+message ThrowFlyKissRequest {
+    required uint32 user_id = 1;
+};
+
+message BriefRoom {
+    required uint32 room_id = 1;
+    required uint32 game_id = 2;
+    required RoomLevel level = 3;
+};
+
+message LeaveRoomRequest {
+    required uint32 user_id = 1;
+};
+
+message FindPrivateRoomRequest {
+    required uint32 user_id = 1;
+    required string enter_token = 2;
+    required uint32 client_type = 3;
+};
+
+message LoseGameRequest {
+    required uint32 room_id = 1;
+    required RoomLevel level = 2;
+    required uint32 user_id = 3;
+    required string transaction_id = 4;
+    required uint64 lose_currency = 5;
+    required uint64 lose_bank_currency = 6;
+    required bool   is_spring = 7;
+    required bool   is_anti_spring = 8;
+    required uint32 exp = 9;
+    required uint32 round_time = 10;
+    required uint32 multiple = 11;
+    required uint32 last_exp_time = 12;
+    required uint32 daily_exp = 13;
+};
+
+message MuteRequest {
+    required uint32 user_id = 1;
+    required uint32 mute_seconds = 2;
+};
+
+message PlayerInKnockoutResponse{
+    required bool in_knockout = 1;
+    required bool is_gaming = 2;
+    required bool is_hundreding = 3;
+    required bool is_fruiting = 4;
+};
+
+message BreakFriendRequest {
+    required uint32 user_id = 1;
+    required uint32 target_user_id = 2;
+};
+
+message UnMuteResponse {
+};
+
+message ThrowEggResponse {
+};
+
+message GiftRequest {
+    required uint32 user_id = 1;
+};
+
+message IncrementSpecialItemRequest {
+    required uint32 user_id = 1;
+    required string transaction_id = 2;
+    required uint32 item_id = 3;
+    required int32 life_time = 4;
+};
+
+message IncrementItemRequest {
+    required uint32 user_id = 1;
+    required string transaction_id = 2;
+    required uint32 item_id = 3;
+    required uint32 count = 4;
+};
+
+message UnregisterChatRequest {};
+
+message PrivateRoomResponse {
+    required Game game = 1;
+    required string token = 2;
+    required string enter_token = 3;
+    required uint32 level = 4;
+};
+
+message LeaveChatResponse {};
+
+message UnregisterChatResponse {};
+
+message PurchaseItemResponse {
+    required uint64 currency = 1;
+    required uint32 cost = 2;
+    repeated Item items = 3;
+    required uint64 diamond = 4;
+    required uint32 cost_type = 5;
+    required uint64 cat_weight = 6;
+};
+
+message GameConcurrent {
+    required uint32 game_id = 1;
+    repeated Concurrent players = 2;
+    repeated Concurrent robots = 3;
+    repeated Concurrent privates = 4;
+};
+
+message SendCurrencyResponse {
+    required uint64 currency = 1;
+};
+
+message IncrementCurrencyRequest {
+    required uint32 user_id = 1;
+    required uint64 delta = 2;
+};
+
+message SendGiftRequest {
+    required uint32 user_id = 1;
+    optional string nick_name = 2;
+    required uint32 target_user_id = 3;
+    required uint32 gift_id = 4;
+    required uint32 count = 5;
+};
+
+message OperateRedEnvelopeResponse{  
+    required uint32 daily_send_red_envelope_count = 1;
+};
+message OperateRedEnvelopeRequest{
+    required uint32 user_id = 1;
+    required uint64 delta_currency = 2;
+    repeated uint32 target_user_ids = 3;
+    required RedEnvelopeOperation operation = 4;
+};
+
+message SellItemRequest {
+    required uint32 user_id = 1;
+    required string transaction_id = 2;
+    required uint32 item_id = 3;
+    required uint32 count = 4;
+    required float discount = 5;
+};
+
+message SpecialItemListResponse {
+    repeated SpecialItem items = 1;
+    repeated SpecialItemID cur_items = 2;
+};
+
+message EnterGameRequest {
+    required uint32 user_id = 1; 
+    required string token = 2;
+};
+
+message MakeFriendRequest {
+    required uint32 user_id = 1; 
+    optional string tencent_nick_name = 2; 
+    required uint32 target_user_id = 3;
+    required uint32 request_id = 4;
+};
+
+message SetSavingPotRequest{
+    required uint32 user_id = 1;
+    required uint32 saving_currency = 2;
+    required uint32 delta_currency = 3;
+    required bool saving_free_used = 4;
+};
+
+message GameListResponse {
+    repeated Game games = 1;
+};
+
+message IncrementGiftRequest {
+    required uint32 user_id = 1;
+    required string transaction_id = 2;
+    required uint32 item_id = 3;
+    required uint32 count = 4;
+};
+
+message IncrementItemResponse {
+    required Item item = 1;
+};
+
+message BreakFriendResponse {
+};
+
+message SendCurrencyRequest {
+    required uint32 user_id = 1;
+    required uint32 target_user_id = 2;
+    required uint64 lose_currency = 4;
+    required uint64 gain_currency = 5;
+};
+
+message HundredConcurrent {
+    required uint32 hundred_id = 1;
+    required uint32 player_count = 2;
+    required uint32 robot_count = 3;
+};
+
+message EnterRoomRequest {
+    required uint32 user_id = 1;
+    required uint32 room_id = 2;
+};
+
+message OpenRedEnvelope{
+    required uint32 user_id = 1;
+    required uint32 currency = 2;
+};
+
+message TextSpeakerResponse {
+    required uint64 currency = 1;
+    repeated Item items = 2;
+};
+
+message EnterChatResponse {
+    required string channel = 1;
+    required bool is_active = 2;
+    required uint64 mute_end_time = 3;
+    optional string app_version = 4;
+    optional string pf = 5;
+    optional string created_time = 6;
+    required uint32 saving_currency = 7;
+    required bool saving_free_used = 8; 
+    required uint32 player_type = 9;
+    required string open_id = 10;
+    required string open_key = 11;
+    required string package_type = 12;
+};
+
+message QuickGameRequest {
+    required uint32 user_id = 1;
+    required uint32 client_type = 2;
+};
+
+message UpdateProfileRequest {
+    required uint32 user_id = 1;
+    optional string tencent_nick_name = 2;
+    optional string tencent_gender = 3;
+    optional string tencent_figure_url = 4;
+    optional bool is_active = 5;
+    optional string signature = 6;
+    optional bool is_admin = 7 [default= false];
+    optional uint32 figure_prefix = 8;
+};
+
+message LeaveGameResponse {
+};
+
+message LeaveGameRequest {
+    required uint32 user_id = 1; 
+};
+
+message ChargeRequest {
+    required uint32 user_id = 1;
+    required uint32 charge_money = 2;
+    required uint32 charge_times = 3;
+    required uint32 daily_charge_times = 4;
+    required uint32 daily_charge_money = 5;
+    optional uint32 vip_title = 6;
+    optional uint64 cat_weight = 7;
+};
+
+message UpdateAppVersionRequest {
+    required uint32 user_id = 1;
+    optional string app_version = 2;
+};
+
+message SetSavingPotResponse{
+    required uint64 currency = 1;
+};
+message EnterChatRequest {
+    required uint32 user_id = 1; 
+    required string token = 2;
+};
+
+message RecordCardResponse{
+    required bool is_recording_card = 1;  
+    required uint32 count = 2;
+};
+
+message KickResponse {
+};
+
+message DecrementCurrencyRequest {
+    required uint32 user_id = 1;
+    required uint64 delta = 2;
+    optional uint32 reason = 3;
+};
+
+message DeclineFriendResponse {
+};
+
+message FollowGameRequest {
+    required uint32 user_id = 1; 
+    required uint32 target_user_id = 2; 
+    required uint32 client_type = 3;
+};
+
+message ThrowFlyKissResponse {
+};
+
+message RegisterGameRequest {
+    required uint32 game_id = 1;
+    required string host = 2;
+    required uint32 port = 3;
+    required uint32 capacity = 4;
+    required string min_app_version = 5;
+    repeated GameCriteria criterias = 6;
+};
+
+message RegisterChatResponse {};
+
+message GameCriteria {
+    required RoomLevel level = 1;
+    required uint32 ante_cash = 2;
+    required uint32 min_cash = 3;
+    required int64 max_limit_cash = 4;
+};
+
+message RegisterGameResponse {
+};
+
+message IncrementGiftResponse {
+    required Item item = 1;
+};
+
+message RequestRecordCard{
+    required uint32 user_id = 1;
+};
+
+message SelectGameRequest {
+    required uint32 user_id = 1; 
+    required RoomLevel level = 2;
+    required uint32 client_type = 3;
+};
+
+message FriendCountResponse {
+    required uint32 friend_count = 1;
+};
+
+message UnregisterGameRequest {};
+
+message FixGameRequest {
+    required uint32 user_id = 1;
+    required uint32 game_id = 2;
+};
+
+message PlayerInKnockoutRequest{
+    required uint32 user_id = 1;
+    required bool in_knockout = 2;
+};
+
+message DetailRoom {
+    required uint32 room_id = 1;
+    required uint32 game_id = 2;
+    required RoomLevel level = 3;
+    required uint32 min_cash = 4;
+    required uint32 ante_cash = 5;
+    required uint32 capped_cash = 6;
+    repeated uint32 raise_cashes = 7;
+    required uint32 check_card_round = 8;
+    required uint32 seat_count = 9;
+    required uint32 max_player_count = 10;
+};
+
+message EnterRoomResponse {
+};
+
+message Chat {
+    required uint32 chat_id = 1;
+    required string host = 2;
+    required uint32 port = 3;
+};
+
+message UpdateMuteEndTimeRequest {
+    required uint32 user_id = 1;
+    required uint64 mute_end_time = 2;
+};
+
+message Item {
+    required uint32 item_id = 1;
+    required uint32 count = 2;
+    required uint32 cur_count = 3;
+};
+
+message DeclineFriendRequest {
+    required uint32 user_id = 1;
+    required uint32 target_user_id = 2;
+    optional string tencent_nick_name = 3; 
+};
+
+message ChatToken {
+    required Chat chat = 1;
+    required string token = 2;
+};
+
+message StatusResponse {
+    required uint32 online_count = 1;
+    required uint32 cache_count = 2;
+    required uint32 game_count = 3;
+};
+
+message PrivateConcurrent {
+    required RoomLevel level = 1;
+    required uint32 online_count = 2;
+};
+
+message UpdateLoginIPRequest {
+    required uint32 user_id = 1;
+    required string login_ip = 2;
+};
+
+message Game {
+    required uint32 game_id = 1;
+    required string host = 2;
+    required uint32 port = 3;
+    optional uint32 room_id = 4;
+};
+
+message ThrowEggRequest {
+    required uint32 user_id = 1;
+};
+
+message GameProfile {
+    required string channel = 1;
+    required uint64 currency = 2;
+    required bool is_robot = 3;
+    required bool is_listener = 4;
+    required bool   is_active = 5 [default= false];
+    required uint32 daily_charge_times = 6;
+    required uint32 daily_charge_money = 7;
+    required uint32 charge_times = 8;
+    required uint32 charge_money = 9;
+    optional string app_version = 10;
+    required uint32 level = 11;
+    required uint32 exp = 12;
+    required string nick_name = 13;
+    required string figure_url = 14;
+    required uint32 gender = 15;
+    required string login_ip = 16;
+};
+
+message PlayerProfile {
+    required uint32 user_id = 1;
+    required uint32 gender = 2;
+    required string nick_name = 3;
+    required uint64 currency = 4;
+    required string channel = 5;
+    required bool is_active = 6;
+    required uint64 charge_times = 7;
+    required uint64 charge_money = 8;
+    required uint64 last_charge_time = 9;
+    required uint32 level = 10;
+    required uint32 exp = 11;
+};
+

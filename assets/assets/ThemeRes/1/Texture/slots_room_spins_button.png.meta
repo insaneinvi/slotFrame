@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "5e49a9df-be18-416a-b157-ad1772ea1019",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "slots_room_spins_button": {
+      "ver": "1.0.3",
+      "uuid": "5b5cc040-2a92-4eae-ba88-edd73a3b8999",
+      "rawTextureUuid": "5e49a9df-be18-416a-b157-ad1772ea1019",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 362,
+      "height": 100,
+      "rawWidth": 362,
+      "rawHeight": 100,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
